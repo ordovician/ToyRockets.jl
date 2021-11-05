@@ -1,0 +1,13 @@
+name = "ToyRockets"
+uuid = "35d4c3f5-bd62-4b09-935a-a4eede4c803d"
+authors = ["Erik Engheim <erik.engheim@mac.com> and contributors"]
+version = "0.1.0"
+
+[compat]
+julia = "1.6"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
