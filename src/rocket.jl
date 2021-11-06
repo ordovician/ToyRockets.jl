@@ -1,9 +1,4 @@
 export StagedRocket
-export Empty, empty
-
-"An empty without any propellant, mass or thrust. Used to mark the end of a staged rocket"
-struct Empty <: Rocket end
-const empty = Empty()
 
 """
 A staged rocket is made up of multiple stages which are rockets themselves
@@ -14,9 +9,13 @@ struct StagedRocket <: Rocket
     engine::Engine
 end
 
-
-mass(::Empty) = 0.0
-
+"""
+    Rocket(tank, engine)
+Create a single stage rocket
+"""
+function Rocket(tank::Tank, engine::Engine)
+    StagedRocket(emptyrocket, tank, engine)
+end
 
 """
     mass(r::StagedRocket)
@@ -26,17 +25,12 @@ function mass(r::StagedRocket)
     mass(r.nextstage) + mass(r.tank) + mass(r.engine)
 end
 
-
-function update!(r::Empty, t::Number, Δt::Number)
-    
-end
-
 """
     update!(r::StagedRocket)
 Consume propellant for current active stage (bottom stage and any active boosters).
 """
 function update!(r::StagedRocket, t::Number, Δt::Number)
-    mflow = mass_flow(thrust(r), ISP(r.engine))
+    mflow = mass_flow(thrust(r), Isp(r.engine))
 	consume!(r.tank, mflow * Δt)
 end
 
@@ -45,5 +39,3 @@ end
 Total thrust of active rocket stage
 """
 thrust(r::StagedRocket) = thrust(r.engine)
-
-thrust(r::Empty) = 0
