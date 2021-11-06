@@ -13,6 +13,7 @@ include("engines.jl")
 include("custom-engine.jl")
 include("cluster.jl")
 include("empty-rocket.jl")
-include("rocket.jl")
+include("staged-rocket.jl")
+include("iterate-rocket.jl")
 
 end
