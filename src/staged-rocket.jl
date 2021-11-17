@@ -9,12 +9,17 @@ struct StagedRocket <: Rocket
     engine::Engine
 end
 
+
+function Rocket(payload::Rocket, tank::Tank, engine::Engine)
+    StagedRocket(payload, tank, engine)
+end
+
 """
     Rocket(tank, engine)
 Create a single stage rocket
 """
 function Rocket(tank::Tank, engine::Engine)
-    StagedRocket(emptyrocket, tank, engine)
+    StagedRocket(emptypayload, tank, engine)
 end
 
 """

@@ -1,9 +1,9 @@
-export EmptyRocket, emptyrocket
+export EmptyPayload, emptypayload
 
 "An empty without any propellant, mass or thrust. Used to mark the end of a staged rocket"
-struct EmptyRocket <: Rocket end
-const emptyrocket = EmptyRocket()
+struct EmptyPayload <: Rocket end
+const emptypayload = EmptyPayload()
 
-mass(::EmptyRocket) = 0.0
-thrust(r::EmptyRocket) = 0
-update!(r::EmptyRocket, t::Number, Δt::Number) = nothing
+mass(::EmptyPayload) = 0.0
+thrust(r::EmptyPayload) = 0
+update!(r::EmptyPayload, t::Number, Δt::Number) = nothing
