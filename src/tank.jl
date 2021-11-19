@@ -1,11 +1,18 @@
 import Base: isempty
 
-export Tank, propellant, propellant!
+export Tank, drymass, totalmass, propellant, propellant!
 export refill!, consume!
 export mass
 
 "Stores propellant for a rocket"
 abstract type Tank end
+
+
+"`totalmass(tank)` Mass of propellant tank when it is full."
+function totalmass end
+
+"`drymass(tank)` Mass of an empty propellant tank"
+function drymass end
 
 """
     propellant(t::Tank)
@@ -17,7 +24,14 @@ propellant(tank::Tank) = tank.propellant
     propellant!(t::Tank, amount)
 Set amount of propellant in tank to `amount`.
 """
-propellant!(tank::Tank, amount::Real) = tank.propellant = amount
+function propellant!(tank::Tank, amount::Real)
+    if 0 <= amount + drymass(tank) <= totalmass(tank)
+        tank.propellant = amount
+    else
+        msg = "Propellant mass plus dry mass must be less than total mass"
+        throw(DomainError(amount, msg))
+    end
+end
 
 """
     isempty(t::Tank)
