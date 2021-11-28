@@ -7,11 +7,16 @@ export mass
 "Stores propellant for a rocket"
 abstract type Tank end
 
-
-"`totalmass(tank)` Mass of propellant tank when it is full."
+"""
+    totalmass(t::Tank) -> Float64
+Mass of propellant tank `t` when it is full.
+"""
 function totalmass end
 
-"`drymass(tank)` Mass of an empty propellant tank"
+"""
+    drymass(t::Tank) -> Float64
+Mass of propellant tank `t` when it is empty.
+"""
 function drymass end
 
 """
