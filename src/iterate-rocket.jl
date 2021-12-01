@@ -1,6 +1,6 @@
-import Base: iterate
+import Base: iterate, IteratorSize
 
-# Base.IteratorSize(::Rocket) = Base.SizeUnknown()
+IteratorSize(::Type{<:Rocket}) = Base.SizeUnknown()
 
 iterate(r::StagedRocket) = (r, r.nextstage)
 iterate(r::Rocket) = nothing

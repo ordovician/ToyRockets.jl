@@ -6,15 +6,20 @@ module ToyRockets
 
 include("interfaces.jl")
 include("physics.jl")
+
 include("tank.jl")
 include("tanks.jl")
 include("flexi-tank.jl")
+
 include("engines.jl")
 include("custom-engine.jl")
 include("cluster.jl")
+include("cluster-index.jl")
+
 include("payloads.jl")
 include("empty-rocket.jl")
 include("staged-rocket.jl")
 include("iterate-rocket.jl")
+include("operations.jl")
 
 end
