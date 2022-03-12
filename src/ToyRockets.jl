@@ -22,4 +22,7 @@ include("staged-rocket.jl")
 include("iterate-rocket.jl")
 include("operations.jl")
 
+include("simulate.jl")
+
+
 end
